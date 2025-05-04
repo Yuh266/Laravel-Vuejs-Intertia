@@ -13,6 +13,9 @@ class ProductController extends Controller
     {
         // Lấy danh sách sản phẩm từ cơ sở dữ liệu
         $products = Product::all(); // Phân trang 10 sản phẩm mỗi trang
+        $products = Product::orderBy('created_at', 'desc')->paginate(10);
+
+        // return $products;
 
         // Trả về view với danh sách sản phẩm
         return Inertia::render('Products/Index', [
